@@ -1,4 +1,4 @@
-# openblock-link-desktop
+# P-learn-link-desktop
 ## Install
 ```bash
 npm install
