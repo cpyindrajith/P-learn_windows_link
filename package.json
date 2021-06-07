@@ -1,0 +1,48 @@
+{
+  "name": "WiinBlock-link-desktop",
+  "productName": "WiinBlock Link",
+  "version": "1.0.0",
+  "description": "WiinBlock link desktop",
+  "main": "src/index.js",
+  "scripts": {
+    "postinstall": "electron-builder install-app-deps && npm run cpdevice && npm run cpext && npm run cptools",
+    "cpdevice": "cpy ./ ../../../devices --parents --cwd=./node_modules/openblock-device/src",
+    "cpext": "cpy ./ ../../../extensions --parents --cwd=./node_modules/openblock-extension/src",
+    "cptools": "cpy ./ ../../../tools --parents --cwd=./node_modules/openblock-link/tools",
+    "start": "electron .",
+    "build": "npm run build:pack",
+    "build:pack": "electron-builder --dir",
+    "build:dist": "npm run cpdevice && npm run cpext && npm run cptools && electron-builder",
+    "clean": "rimraf dist devices extensions tools",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/openblockcc/openblock-link-desktop.git"
+  },
+  "keywords": [
+    "openblock",
+    "link",
+    "scratch3.0",
+    "desktop"
+  ],
+  "author": "Indrajith T",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/openblockcc/openblock-link-desktop/issues"
+  },
+  "homepage": "https://github.com/openblockcc/openblock-link-desktop#readme",
+  "dependencies": {
+    "compare-versions": "^3.6.0",
+    "del": "^6.0.0",
+    "openblock-device": "0.1.0-prerelease.20210328115506",
+    "openblock-extension": "0.1.0-prerelease.20210329032033",
+    "openblock-link": "0.1.0-prerelease.20210326122102"
+  },
+  "devDependencies": {
+    "cpy-cli": "^3.1.1",
+    "electron": "^8.5.5",
+    "electron-builder": "^22.9.1",
+    "rimraf": "^3.0.2"
+  }
+}
